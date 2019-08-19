@@ -1,11 +1,12 @@
+import config
 import discord
 from discord.ext import commands
 import asyncio
 from itertools import cycle
-import config
+
 
 client = commands.Bot(command_prefix = '$')
-status = ['V0.5','WIP']
+status = ['V0.54','WIP']
 
 async def change_status():
     await client.wait_until_ready()
@@ -37,4 +38,4 @@ async def on_message(message):
 
 client.loop.create_task(change_status())
 
-bot.run(config.TOKEN)
+client.run(config.TOKEN)
