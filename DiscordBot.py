@@ -6,7 +6,7 @@ from itertools import cycle
 
 
 client = commands.Bot(command_prefix = '$')
-status = ['V0.54','WIP']
+status = ['V0.55','WIP']
 
 async def change_status():
     await client.wait_until_ready()
@@ -21,6 +21,13 @@ async def change_status():
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
 
+@client.event
+async def on_member_join(member):
+    print(f'{member} has joined the server.')
+
+@client.event
+async def on_member_remove(member):
+    print(f'{member} has left the server.')
 
 @client.event
 async def on_message(message):
