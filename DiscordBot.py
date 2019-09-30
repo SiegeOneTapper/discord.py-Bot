@@ -3,8 +3,9 @@ import discord
 from discord.ext import commands
 import asyncio
 from itertools import cycle
+from datetime import datetime
 
-
+now = datetime.now
 client = commands.Bot(command_prefix = '$')
 status = ['V0.55','WIP']
 
@@ -33,6 +34,10 @@ async def on_member_remove(member):
 async def on_message(message):
     if message.author == client.user:
         return
+
+    if message.content.startswith('$time'):
+        dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+        print("date and time =", dt_string)	
 
     if message.content.startswith('$hello'):
         await message.channel.send('Hello!')
